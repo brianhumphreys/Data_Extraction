@@ -1,5 +1,5 @@
 import argparse
-import constants
+from constants import *
 import math
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -45,12 +45,12 @@ class MinSpanDataParser():
         self.low=None
         self.high=None
         for _, row in self.df.iterrows():
-            span = abs(row['bound1'] - row['bound2'])
+            span = abs(row[BOUND1] - row[BOUND2])
             if span < self.minimum_span:
                 self.minimum_span = span
-                self.minimum_span_id = row['id']
-                self.low=row['bound1']
-                self.high=row['bound2']
+                self.minimum_span_id = row[ID]
+                self.low=row[BOUND1]
+                self.high=row[BOUND2]
          
 
     # Out put will always print results to terminal and have the option to print to an output file
@@ -71,10 +71,10 @@ class MinSpanDataParser():
         ax.set_xlabel(self.plot_x)
         ax.yaxis.grid() # Setting up the horizontal grid lines in the background
 
-        plt.plot(self.df['id'], self.df['bound1'], '#FF9100', linewidth = 1, alpha=0.75, label = 'Month Highs')
-        plt.plot(self.df['id'], self.df['bound2'], '#80D8FF', linewidth = 1, alpha=0.75, label = 'Month Lows')
-        plt.fill_between(self.df['id'], self.df['bound1'], self.df['bound2'], facecolor='#EEEEEE')
-        plt.plot((self.minimum_span_id, self.minimum_span_id), (self.high, self.low), 'r', label = "Minimum Spread")
+        plt.plot(self.df[ID], self.df[BOUND1], '#FF9100', linewidth = 1, alpha=0.75, label = 'Month Highs')
+        plt.plot(self.df[ID], self.df[BOUND2], '#80D8FF', linewidth = 1, alpha=0.75, label = 'Month Lows')
+        plt.fill_between(self.df[ID], self.df[BOUND1], self.df[BOUND2], facecolor='#EEEEEE')
+        plt.plot((self.minimum_span_id, self.minimum_span_id), (self.high, self.low), 'r', label = MIN_LABEL)
         plt.legend(loc = 1).get_frame().set_edgecolor('white') 
         plt.show()
 
@@ -93,17 +93,17 @@ class SoccerParser(MinSpanDataParser):
     @functionLogger
     def __init__(self, arguments):
         super(SoccerParser, self).__init__(arguments)
-        self.dataset = constants.SOCCER
-        self.plot_x = constants.SOCCER_X
-        self.plot_y = constants.SOCCER_Y
-        self.plot_title = constants.SOCCER_TITLE
+        self.dataset = SOCCER
+        self.plot_x = SOCCER_X
+        self.plot_y = SOCCER_Y
+        self.plot_title = SOCCER_TITLE
     
     @functionLogger
     def parseDataSet(self):
-        print("soccer")
+        # print("soccer")
         self.df = pd.read_csv(**self.arguments)
-        self.df.rename(inplace=True, columns={1: "id", 6: "bound1", 8: "bound2"}) # columns are given names for easier access
-        self.df[['bound1', 'bound2']] = self.df[['bound1', 'bound2']].apply(pd.to_numeric)
+        self.df.rename(inplace=True, columns={1: ID, 6: BOUND1, 8: BOUND2}) # columns are given names for easier access
+        self.df[[BOUND1, BOUND2]] = self.df[[BOUND1, BOUND2]].apply(pd.to_numeric)
 
 
 
@@ -121,18 +121,18 @@ class WeatherParser(MinSpanDataParser):
     @functionLogger
     def __init__(self, arguments):
         super(WeatherParser, self).__init__(arguments)
-        self.dataset = constants.WEATHER
-        self.plot_x = constants.WEATHER_X
-        self.plot_y = constants.WEATHER_Y
-        self.plot_title = constants.WEATHER_TITLE
+        self.dataset = WEATHER
+        self.plot_x = WEATHER_X
+        self.plot_y = WEATHER_Y
+        self.plot_title = WEATHER_TITLE
 
     @functionLogger
     def parseDataSet(self):
-        print("weather")
+        # print("weather")
         self.df = pd.read_csv(**self.arguments)
-        self.df.rename(inplace=True, columns={0: "id", 1: "bound1", 2: "bound2"}) # columns are given names for easier access
+        self.df.rename(inplace=True, columns={0: ID, 1: BOUND1, 2: BOUND2}) # columns are given names for easier access
         self.df=self.df.replace('\*','',regex=True)
-        self.df[['id', 'bound1', 'bound2']] = self.df[['id', 'bound1', 'bound2']].apply(pd.to_numeric) 
+        self.df[[ID, BOUND1, BOUND2]] = self.df[[ID, BOUND1, BOUND2]].apply(pd.to_numeric) 
 
  
 
@@ -153,7 +153,7 @@ def main():
     # the readability of the code would be better if only 1 was being run at a time. 
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('-s', '--soccer', action='store_true', help='Find team with F:A ratio closest to 1')
+    group.add_argument('-s', '--soccer', action='store_true', help='Find team with points scored For:Against ratio closest to 1')
     group.add_argument('-w', '--weather', action='store_true', help='Find day with the smallest temperature spread')
     
     parser.add_argument('-g', '--graph', action='store_true', help='Include a graph in final result')
@@ -165,13 +165,13 @@ def main():
     # the initializer will default to processing the first task; the Weather dataset.  Only the columns that are needed are
     # extracted from the dataset.  In both cases, this is only 3 columns.
     if args.soccer:
-        # data_parser = MinSpanDataParser(data=constants.SOCCER)
-        data_parser = SoccerParser(constants.SOCCER_ARGS)
+        # data_parser = MinSpanDataParser(data=SOCCER)
+        data_parser = SoccerParser(SOCCER_ARGS)
     elif args.weather:
-        # data_parser = MinSpanDataParser(data=constants.WEATHER)
-        data_parser = WeatherParser(constants.WEATHER_ARGS)
+        # data_parser = MinSpanDataParser(data=WEATHER)
+        data_parser = WeatherParser(WEATHER_ARGS)
     else:
-        data_parser = WeatherParser(constants.WEATHER_ARGS) # Default is Weather Dataset
+        data_parser = WeatherParser(WEATHER_ARGS) # Default is Weather Dataset
 
     # Both tasks are very similar and can be run using the same function.  The find the minimum difference of columns 1 and 2 (0 indexed)
     # First both data sets are parsed into 3 columns: The Identifier, and two value columns
