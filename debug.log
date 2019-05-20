@@ -254,3 +254,24 @@
 2019-05-20 13:23:57,101 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
 2019-05-20 13:23:57,104 Ran finalOutput from <class '__main__.MinSpanDataParser'>
 2019-05-20 13:23:57,104 Ran plotOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:34:51,680 Ran main from None
+2019-05-20 13:34:51,681 Ran __init__ from <class '__main__.SoccerParser'>
+2019-05-20 13:34:51,681 Ran __init__ from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:34:51,681 Ran parseDataSet from <class '__main__.SoccerParser'>
+2019-05-20 13:34:51,691 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:34:51,693 Ran finalOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:34:51,694 Ran plotOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:36:51,403 Ran main from None
+2019-05-20 13:36:51,404 Ran __init__ from <class '__main__.SoccerParser'>
+2019-05-20 13:36:51,404 Ran __init__ from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:36:51,404 Ran parseDataSet from <class '__main__.SoccerParser'>
+2019-05-20 13:36:51,414 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:36:51,417 Ran finalOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:36:51,417 Ran plotOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:37:32,930 Ran main from None
+2019-05-20 13:37:32,932 Ran __init__ from <class '__main__.SoccerParser'>
+2019-05-20 13:37:32,932 Ran __init__ from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:37:32,932 Ran parseDataSet from <class '__main__.SoccerParser'>
+2019-05-20 13:37:32,941 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:37:32,944 Ran finalOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 13:37:32,945 Ran plotOutput from <class '__main__.MinSpanDataParser'>

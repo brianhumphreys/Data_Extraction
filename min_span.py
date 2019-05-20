@@ -71,11 +71,14 @@ class MinSpanDataParser():
         ax.set_xlabel(self.plot_x)
         ax.yaxis.grid() # Setting up the horizontal grid lines in the background
 
-        plt.plot(self.df[ID], self.df[BOUND1], '#FF9100', linewidth = 1, alpha=0.75, label = 'Month Highs')
-        plt.plot(self.df[ID], self.df[BOUND2], '#80D8FF', linewidth = 1, alpha=0.75, label = 'Month Lows')
+        plt.plot(self.df[ID], self.df[BOUND1], '#FF9100', linewidth = 1, alpha=0.75, label = self.upper)
+        plt.plot(self.df[ID], self.df[BOUND2], '#80D8FF', linewidth = 1, alpha=0.75, label = self.lower)
         plt.fill_between(self.df[ID], self.df[BOUND1], self.df[BOUND2], facecolor='#EEEEEE')
         plt.plot((self.minimum_span_id, self.minimum_span_id), (self.high, self.low), 'r', label = MIN_LABEL)
         plt.legend(loc = 1).get_frame().set_edgecolor('white') 
+
+        if self.dataset == SOCCER:
+            plt.xticks(self.df[ID], rotation=45)
         plt.show()
 
 
@@ -97,6 +100,8 @@ class SoccerParser(MinSpanDataParser):
         self.plot_x = SOCCER_X
         self.plot_y = SOCCER_Y
         self.plot_title = SOCCER_TITLE
+        self.upper = SOCCER_UPPER_LABEL
+        self.lower = SOCCER_LOWER_LABEL
     
     @functionLogger
     def parseDataSet(self):
@@ -125,6 +130,8 @@ class WeatherParser(MinSpanDataParser):
         self.plot_x = WEATHER_X
         self.plot_y = WEATHER_Y
         self.plot_title = WEATHER_TITLE
+        self.upper = WEATHER_UPPER_LABEL
+        self.lower = WEATHER_LOWER_LABEL
 
     @functionLogger
     def parseDataSet(self):
