@@ -57,7 +57,7 @@ class MinSpanDataParser():
     # and also has the option to display a graph
     @functionLogger
     def finalOutput(self, plot_ouput):
-        print(self.minimum_span_id, self.minimum_span)
+        print("ID: ", self.minimum_span_id, "\nMin Span: ", self.minimum_span)
 
         if plot_ouput:
             self.plotOutput()
