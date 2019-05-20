@@ -165,9 +165,15 @@ def main():
     group.add_argument('-w', '--weather', action='store_true', help='Find day with the smallest temperature spread')
     
     parser.add_argument('-g', '--graph', action='store_true', help='Include a graph in final result')
+    parser.add_argument('-c', '--clearlog', action='store_true', help='Clear that messy output log before running the script')
     # parser.add_argument('-o', '--outfile', action='store_true', help='Output results to a file')
 
     args = parser.parse_args()
+
+    # The user has the option to clear the log before running the script to get a better look under the hood
+    if args.clearlog:
+        with open('debug.log', 'w'):
+            pass
 
     # The data parser is initialized depending on the user input specifying which dataset to process.  If no arguments are passed,
     # the initializer will default to processing the first task; the Weather dataset.  Only the columns that are needed are
