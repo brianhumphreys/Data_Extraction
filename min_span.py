@@ -62,6 +62,7 @@ class MinSpanDataParser():
         if plot_ouput:
             self.plotOutput()
 
+    # plot is conditional 
     @functionLogger
     def plotOutput(self):
         print("plotted")

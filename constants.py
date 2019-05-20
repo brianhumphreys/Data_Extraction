@@ -22,7 +22,7 @@ WEATHER_ARGS = {
 
 
 SOCCER = 'soccer'
-SOCCER_X = 'Team Number'
+SOCCER_X = 'Team Name'
 SOCCER_Y = 'Points Scored'
 SOCCER_TITLE = 'Soccer Points Scored and Minimum Spread'
 SOCCER_UPPER_LABEL = 'Points For'
