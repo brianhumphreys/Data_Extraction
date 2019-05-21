@@ -52,6 +52,16 @@ class MinSpanDataParser():
                 self.low=row[BOUND1]
                 self.high=row[BOUND2]
          
+    def __len__(self):
+        return self.minimum_span
+
+    def __repr__(self):
+        return 'MinSpanDataParser({!r})'.format(self.arguments)
+
+    def __str__(self):
+        return 'MinSpanDataParse with Pandas open_csv() arguments: {}'.format(self.arguments)
+
+    
 
     # Out put will always print results to terminal and have the option to print to an output file
     # and also has the option to display a graph
@@ -104,6 +114,12 @@ class SoccerParser(MinSpanDataParser):
         self.plot_title = SOCCER_TITLE
         self.upper = SOCCER_UPPER_LABEL
         self.lower = SOCCER_LOWER_LABEL
+
+    def __repr__(self):
+        return 'SoccerParser({!r})'.format(self.arguments)
+
+    def __str__(self):
+        return 'SoccerParser with Pandas open_csv() arguments: {}'.format(self.arguments)
     
     @functionLogger
     def parseDataSet(self):
@@ -134,6 +150,12 @@ class WeatherParser(MinSpanDataParser):
         self.plot_title = WEATHER_TITLE
         self.upper = WEATHER_UPPER_LABEL
         self.lower = WEATHER_LOWER_LABEL
+
+    def __repr__(self):
+        return 'WeatherParser({!r})'.format(self.arguments)
+
+    def __str__(self):
+        return 'WeatherParser with Pandas open_csv() arguments: {}'.format(self.arguments)
 
     @functionLogger
     def parseDataSet(self):
@@ -187,6 +209,10 @@ def main():
         data_parser = WeatherParser(WEATHER_ARGS)
     else:
         data_parser = WeatherParser(WEATHER_ARGS) # Default is Weather Dataset
+
+    print("Parsing Object Created")
+    print(str(data_parser))
+    print("-----------Result-----------")
 
     # Both tasks are very similar and can be run using the same function.  The find the minimum difference of columns 1 and 2 (0 indexed)
     # First both data sets are parsed into 3 columns: The Identifier, and two value columns
