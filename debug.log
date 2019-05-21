@@ -3,3 +3,9 @@
 2019-05-20 14:36:01,938 Ran parseDataSet from <class '__main__.WeatherParser'>
 2019-05-20 14:36:01,949 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
 2019-05-20 14:36:01,953 Ran finalOutput from <class '__main__.MinSpanDataParser'>
+2019-05-20 16:27:51,562 Ran main from None
+2019-05-20 16:27:51,563 Ran __init__ from <class '__main__.WeatherParser'>
+2019-05-20 16:27:51,563 Ran __init__ from <class '__main__.MinSpanDataParser'>
+2019-05-20 16:27:51,563 Ran parseDataSet from <class '__main__.WeatherParser'>
+2019-05-20 16:27:51,575 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
+2019-05-20 16:27:51,578 Ran finalOutput from <class '__main__.MinSpanDataParser'>
