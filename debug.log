@@ -1,5 +1,5 @@
-2019-05-21 16:20:10,639 Ran __init__ from <class '__main__.WeatherParser'>
-2019-05-21 16:20:10,639 Ran __init__ from <class '__main__.MinSpanDataParser'>
-2019-05-21 16:20:10,639 Ran parseDataSet from <class '__main__.WeatherParser'>
-2019-05-21 16:20:10,650 Ran findMinSpan from <class '__main__.MinSpanDataParser'>
-2019-05-21 16:20:10,653 Ran finalOutput from <class '__main__.MinSpanDataParser'>
+2019-05-21 16:56:29,742 Ran __init__ from class: <class '__main__.SoccerParser'> using the arguments:
+2019-05-21 16:56:29,742 Ran __init__ from class: <class '__main__.MinSpanDataParser'> using the arguments:
+2019-05-21 16:56:29,742 Ran parseDataSet from class: <class '__main__.SoccerParser'> using the arguments:
+2019-05-21 16:56:29,750 Ran findMinSpan from class: <class '__main__.MinSpanDataParser'> using the arguments:
+2019-05-21 16:56:29,753 Ran finalOutput from class: <class '__main__.MinSpanDataParser'> using the arguments:

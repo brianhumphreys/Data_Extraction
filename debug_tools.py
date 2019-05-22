@@ -33,7 +33,7 @@ def get_class_that_defined_method(meth):
 #   Decorated function.  In this case, the function is decorated to log output of the function called, th class it
 #   called from and the time it was called. 
 ##############################################################################################################
-def functionLogger(outputFunction):
+def functionLogger(outputFunction, argument=None):
     import logging
     logging.basicConfig(
         filename="debug.log",
@@ -45,10 +45,14 @@ def functionLogger(outputFunction):
     # in the case of 
     @wraps(outputFunction)
     def logWrapper(*args, **kwargs):
+        # args_repr = [repr(a) for a in args]                      
+        # kwargs_repr = [f"{k}={v!r}" for k, v in kwargs.items()] 
+        # signature = ", ".join(args_repr + kwargs_repr)
         logging.info(
-            "Ran {} from {}".format(
+            "Ran {} from class: {} using the arguments:{}".format(
                 outputFunction.__name__,
-                get_class_that_defined_method(outputFunction)
+                get_class_that_defined_method(outputFunction),
+                repr(argument)
         ))
         return outputFunction(*args, **kwargs)
     return logWrapper
